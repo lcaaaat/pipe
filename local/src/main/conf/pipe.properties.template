@@ -1,0 +1,5 @@
+# project.directory = project
+# remote.host = 127.0.0.1
+# remote.port = 8724
+# scanner.worker.number = 10
+# scanner.worker.number = 5/Users/lijiye/Projects/lcaaaat/pipe

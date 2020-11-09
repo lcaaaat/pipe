@@ -1,0 +1,7 @@
+LOG_DIR=${log.dir}
+log4j.rootLogger=INFO, Console
+log4j.appender.Console=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.Console.DatePattern='.'yyyy-MM-dd
+log4j.appender.Console.File=${LOG_DIR}/console.log
+log4j.appender.Console.layout=org.apache.log4j.PatternLayout
+log4j.appender.Console.layout.ConversionPattern=%d{yyyy/MM/dd HH:mm:ss} %p [%l][%X{REQ_ID}][Thread-%t] %m%n

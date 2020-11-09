@@ -1,0 +1,33 @@
+group 'com.lcaaaat.Pipe'
+version '1.0'
+
+apply plugin: "java"
+
+subprojects {
+    apply plugin: "java"
+    apply plugin: "scala"
+
+    group 'com.lcaaaat.Pipe'
+    version '1.0'
+
+    sourceCompatibility = 1.8
+
+    repositories {
+        maven { url 'https://maven.aliyun.com/repository/google/' }
+        maven { url 'https://maven.aliyun.com/repository/jcenter/' }
+        mavenCentral()
+    }
+}
+
+clean.doFirst {
+    delete "build"
+}
+
+
+task packageTgz(type: Copy) {
+    dependsOn ":local:packageTgz", "remote:packageTgz"
+    from("remote/build/pipe-remote-${project.version}.tgz")
+    from("local/build/pipe-local-${project.version}.tgz")
+    into("build/")
+}
+

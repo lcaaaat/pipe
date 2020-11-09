@@ -1,0 +1,7 @@
+# server.port = 8724
+# server.worker.min.threads = 1
+# server.worker.max.threads = 50
+# rocksdb.path = rocksdb
+# rocksdb.option.create.if.missing = true
+# rocksdb.option.create.missing.cf = true
+# project.base.path = project

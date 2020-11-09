@@ -1,0 +1,38 @@
+dependencies {
+  compile(project(":common"))
+  compile "org.scala-lang:scala-library:2.12.12"
+  testCompile group: 'junit', name: 'junit', version: '4.12'
+}
+
+jar {
+  baseName("pipe-local")
+  version(project.version)
+}
+
+task copyLib(type: Copy) {
+  dependsOn build
+  from(configurations.compile)
+  from("build/libs")
+  into("build/package/pipe-local/lib")
+}
+
+task copyConf(type: Copy) {
+  dependsOn build
+  from("src/main/conf")
+  into("build/package/pipe-local/conf/")
+}
+
+task copyBin(type: Copy) {
+  dependsOn build
+  from("src/main/bin")
+  into("build/package/pipe-local/bin/")
+}
+
+task packageTgz(type: Tar) {
+  dependsOn copyConf, copyLib, copyBin
+  compression Compression.GZIP
+  from("build/package/")
+  baseName("pipe-local")
+  extension "tgz"
+  destinationDir file("build")
+}

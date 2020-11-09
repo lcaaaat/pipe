@@ -1,0 +1,5 @@
+rootProject.name = 'Pipe'
+include 'common'
+include 'remote'
+include 'local'
+
